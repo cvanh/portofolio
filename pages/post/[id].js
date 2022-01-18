@@ -1,6 +1,7 @@
 import Header from "../../components/header/Header";
 import { useRouter } from 'next/router'
 import Container from "../../styled/container";
+import { Date,Image, Post } from "../../styled/post.styled";
 
 
 function Page({ data }) {
@@ -9,10 +10,12 @@ function Page({ data }) {
     <>
       <Header/>
       <Container>
-          <img src={data.tumbnail}></img>
-          <div>date: {data.date}</div>
+      <Post>
+          <Image alt={data.title} src={data.tumbnail}/>
+          <Date>posted on: {data.date}</Date>
           <div>{data.title}</div>
           <p>{data.body}</p>
+        </Post>
       </Container>
     </>
   );
