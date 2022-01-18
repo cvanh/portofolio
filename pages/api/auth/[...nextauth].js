@@ -6,8 +6,7 @@ export default NextAuth({
   database: process.env.DATABASE_URL,
   secret: process.env.SECRET,
   providers: [ 
-    // Passwordless / email sign in
-    EmailProvider({         
+      EmailProvider({         
       server: process.env.MAIL_SERVER,
       from: 'NextAuth.js <no-reply@example.com>'
     }),
