@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import { ContactForm, Content, Input } from "../../styled/contact.styled";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import Socialbar from "../../components/socialbar";
 
 function Contact() {
   const registerUser = async (event) => {
@@ -19,10 +20,10 @@ function Contact() {
       method: "POST",
     });
 
-    // clear the fields 
-    event.target.name.value = null
-    event.target.email.value = null
-    event.target.message.value = null
+    // clear the fields
+    event.target.name.value = null;
+    event.target.email.value = null;
+    event.target.message.value = null;
   };
 
   return (
@@ -52,6 +53,7 @@ function Contact() {
           <Content tabIndex="3" name="message" placeholder="message" />
           <button tabIndex="4">confirm</button>
         </ContactForm>
+        <Socialbar>or contact me via:</Socialbar>
       </Container>
     </>
   );
