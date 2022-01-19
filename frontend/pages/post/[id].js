@@ -21,7 +21,8 @@ function Page({ data }) {
   );
 }
 Page.getInitialProps = async ({query}) => {
-  const res = await fetch(`http://localhost:3000/api/crud/GetPost/${query.id}`);
+  const id = parseInt(query.id)
+  const res = await fetch(`http://localhost:3000/api/crud/GetPost/${id}`);
   const json = await res.json();
   return { data: json[0] }; // the [0] is to convert the array to only a object
 };
