@@ -17,4 +17,10 @@ $router->get('/test', function () use ($database) {
     var_dump($database->query($query));    
 });
 
+$router->get('/getpost', function () use ($database) {
+    echo "kaas";
+    $query = "SELECT * FROM portofolio";
+    var_dump($database->query($query));    
+});
+
 $router->run();
