@@ -1,6 +1,7 @@
 <?php
 require '../vendor/autoload.php';
-require_once ("../lib/db.php");
+require_once("../lib/db.php");
+require_once("./functions/format_query.php");
 
 // load the .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -14,13 +15,33 @@ $router = new \Bramus\Router\Router();
 $router->get('/test', function () use ($database) {
     echo "kaas";
     $query = "SELECT * FROM portofolio";
-    var_dump($database->query($query));    
+    print_r($database->query($query));
+});
+
+$router->get('/crud/getpost/\d+', function ($amount) use ($database) {
+    $query = `SELECT * FROM portofolio LIMIT {$amount}`;
+    $data = format_query($database,$query);
+    echo json_encode($data, JSON_PRETTY_PRINT);
 });
 
 $router->get('/getpost', function () use ($database) {
-    echo "kaas";
     $query = "SELECT * FROM portofolio";
-    var_dump($database->query($query));    
+    $data = format_query($database,$query);
+    echo json_encode($data, JSON_PRETTY_PRINT);
+});
+
+$router->get('/contact/get', function () use ($database) {
+    $query = "SELECT * FROM contacts";
+    $data = format_query($database,$query);
+    echo json_encode($data, JSON_PRETTY_PRINT);
+});
+
+$router->post('/contact/insert', function () use ($database) {
+    $query = `
+    INSERT INTO contacts (id, name, email, content,date) VALUES (NULL, '{$_POST["name"]}', '{$_POST["email"]}', '{$_POST["content"]}', NOW()); 
+    `;
+    $data = format_query($database,$query);
+    echo json_encode($data, JSON_PRETTY_PRINT);
 });
 
 $router->run();
