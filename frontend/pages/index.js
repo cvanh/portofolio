@@ -8,8 +8,11 @@ import {Field,
   CardBig, 
   Main} from "../styled/home.styled.js";
 
+  const config = require("../config.json")
+
+
 function Page({ data }) {
-  let PostCount = 0; //
+  let PostCount = 0; 
   return (
     <>
       <Header />
@@ -48,7 +51,7 @@ function Page({ data }) {
   );
 }
 Page.getInitialProps = async (ctx) => {
-  const res = await fetch("http://localhost:3000/api/crud/GetPosts?limit=10");
+  const res = await fetch(`${config.BaseUrl}/crud/getposts?limit=10`);
   const json = await res.json();
   return { data: json };
 };

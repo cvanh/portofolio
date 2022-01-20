@@ -21,6 +21,6 @@ export async function query(
     await db.end()
     return results
   } catch (e) {
-    throw Error(e.message)
+    throw Error(e)
   }
 }
