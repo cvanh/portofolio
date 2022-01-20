@@ -2,6 +2,7 @@ import Header from "../../components/header/Header";
 import { useRouter } from 'next/router'
 import Container from "../../styled/container";
 import { Date,Image, Post } from "../../styled/post.styled";
+const config = require("../../config.json")
 
 
 function Page({ data }) {
@@ -22,7 +23,7 @@ function Page({ data }) {
 }
 Page.getInitialProps = async ({query}) => {
   const id = parseInt(query.id)
-  const res = await fetch(`http://localhost:3000/api/crud/GetPost/${id}`);
+  const res = await fetch(`${config.BaseUrl}/api/crud/GetPost/${id}`);
   const json = await res.json();
   return { data: json[0] }; // the [0] is to convert the array to only a object
 };

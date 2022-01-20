@@ -19,9 +19,10 @@ $router->get('/crud/getpost/(\d+)', function ($amount) use ($database) {
     echo $data;
 });
 
-// get all posts
+// get all posts with the limit
 $router->get('/crud/getposts', function () use ($database) {
-    $query = "SELECT * FROM portofolio";
+    $amount = (int)$_GET["limit"]; // makes shure it's only a int to prevent sql injection
+    $query = "SELECT * FROM portofolio limit " . $amount;
     $data = format_query($database,$query);
     echo $data;
 });
@@ -38,8 +39,17 @@ $router->post('/contact/insert', function () use ($database) {
     $query = `
     INSERT INTO contacts (id, name, email, content,date) VALUES (NULL, '{$_POST["name"]}', '{$_POST["email"]}', '{$_POST["content"]}', NOW()); 
     `;
-    $data = format_query($database,$query);
-    echo json_encode($data, JSON_PRETTY_PRINT);
+    $database->query($query);
+    echo "succes";
+});
+
+// creates a blog
+$router->post('/crud/createblog', function () use ($database) {
+    $query = `
+    INSERT INTO contacts (id, name, email, content,date) VALUES (NULL, '{$_POST["name"]}', '{$_POST["email"]}', '{$_POST["content"]}', NOW()); 
+    `;
+    $database->query($query);
+    echo "succes";
 });
 
 $router->run();
