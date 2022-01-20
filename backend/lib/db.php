@@ -28,4 +28,19 @@ class Database {
   function escape($string) {
     return $this->connection->escape_string($string);
   }
+  /** TODO doesnt work 
+   * format_query
+   * NOTE: makes a query to the database
+   * @param string $query
+   * @return object wich is formated in json
+   */
+  function format_query($query){
+    header('Content-type: application/json; charset=utf-8');
+    $result = $this->query($query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $data[]=$row;
+    }
+    $response = json_encode($data, JSON_PRETTY_PRINT);
+    return $response;
+  }
 }
