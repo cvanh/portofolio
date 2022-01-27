@@ -1,6 +1,6 @@
 <?php
 
-$im = imagecreatetruecolor(800, 250);
+$im = imagecreatetruecolor(800, 350);
 
 // Add text using a font from local file
 imagefttext(
@@ -24,6 +24,18 @@ imagefttext(
     './terminal.TTF',
     "last seen: 24-1-2021"
 );
+
+imagefttext(
+    $im,
+    50,
+    0,
+    50,
+    300,
+    imagecolorallocate($im, 0, 150, 0),
+    './terminal.TTF',
+    "user-agent: {$_SERVER["HTTP_USER_AGENT"]}"
+);
+
 
 header('Content-Type: image/png');
 imagepng($im);
