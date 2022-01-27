@@ -1,6 +1,6 @@
 const svg = document.getElementById("svg");
 
-fetch("http://localhost:8000/backend/src/tracking")
+fetch("http://localhost/backend/src/tracking")
   .then((response) => response.json())
   .then((data) => RenderData(data));
 
