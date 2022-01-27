@@ -12,6 +12,12 @@ $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MY
 
 $router = new \Bramus\Router\Router();
 
+// returns the data about the user
+$router->get('/tracking',function(){
+   echo '{"kaas":"'.$_SERVER["REMOTE_ADDR"].'"}';
+});
+
+
 // get specific post based on id
 $router->get('/crud/getpost/(\d+)', function ($amount) use ($database) {
     $query = "SELECT * FROM portofolio where id =  " . $amount;

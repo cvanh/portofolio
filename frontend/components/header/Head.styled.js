@@ -6,7 +6,7 @@ const Header = styled.header`
   min-height: 20px;
   background-color: gray;
   display: inline-block;
-  position: fixed;
+  /* position: fixed; */
   border-bottom: 1px black solid;
 `;
 

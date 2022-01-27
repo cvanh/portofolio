@@ -1,0 +1,62 @@
+{
+    "packages": [
+        {
+            "name": "meyfa/php-svg",
+            "version": "v0.11.2",
+            "version_normalized": "0.11.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/meyfa/php-svg.git",
+                "reference": "619033e906043a48439bf1661ba0b07b3624d9d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/meyfa/php-svg/zipball/619033e906043a48439bf1661ba0b07b3624d9d6",
+                "reference": "619033e906043a48439bf1661ba0b07b3624d9d6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "meyfa/phpunit-assert-gd": "^1.1",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^4.8"
+            },
+            "suggest": {
+                "ext-gd": "Needed to rasterize images",
+                "ext-simplexml": "Needed to read SVG strings and files"
+            },
+            "time": "2021-05-25T07:38:49+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "SVG\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Meyer",
+                    "homepage": "http://meyfa.net"
+                }
+            ],
+            "description": "Read, edit, write, and render SVG files with PHP",
+            "homepage": "https://github.com/meyfa/php-svg",
+            "keywords": [
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/meyfa/php-svg/issues",
+                "source": "https://github.com/meyfa/php-svg/tree/v0.11.2"
+            },
+            "install-path": "../meyfa/php-svg"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
