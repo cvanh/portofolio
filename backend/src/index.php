@@ -14,7 +14,11 @@ $router = new \Bramus\Router\Router();
 
 // returns the data about the user
 $router->get('/tracking',function(){
-   echo '{"kaas":"'.$_SERVER["REMOTE_ADDR"].'"}';
+    $data = Array();
+    $data["ip"] = $_SERVER["REMOTE_ADDR"];
+    $data["time"] = time();
+
+    echo json_encode($data,true);
 });
 
 
