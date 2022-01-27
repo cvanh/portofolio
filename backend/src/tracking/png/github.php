@@ -12,7 +12,7 @@ $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MY
 
 $database->query("INSERT INTO `tracking` (`id`, `ip`, `last_seen`, `last_agent`,`track_id`) VALUES (NULL, '{$_SERVER["REMOTE_ADDR"]}', NOW(), '{$_SERVER["HTTP_USER_AGENT"]}','{$_GET["code"]}');");
 
-$im = imagecreatetruecolor(800, 350);
+$im = imagecreatetruecolor(800, 450);
 
 // Add text using a font from local file
 imagefttext(
@@ -46,6 +46,17 @@ imagefttext(
     imagecolorallocate($im, 0, 150, 0),
     './terminal.TTF',
     "user-agent: {$_SERVER["HTTP_USER_AGENT"]}"
+);
+
+imagefttext(
+    $im,
+    50,
+    0,
+    50,
+    400,
+    imagecolorallocate($im, 0, 150, 0),
+    './terminal.TTF',
+    "code?: {$_GET["code"]}"
 );
 
 
