@@ -10,7 +10,7 @@ $dotenv->load();
 // create the database connection
 $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MYSQL_PASSWORD"], $_ENV["MYSQL_DATABASE"]);
 
-$database->query("INSERT INTO `tracking` (`id`, `ip`, `last_seen`, `last_agent`) VALUES (NULL, '{$_SERVER["REMOTE_ADDR"]}', NOW(), '{$_SERVER["HTTP_USER_AGENT"]}');");
+$database->query("INSERT INTO `tracking` (`id`, `ip`, `last_seen`, `last_agent`,`track_id`) VALUES (NULL, '{$_SERVER["REMOTE_ADDR"]}', NOW(), '{$_SERVER["HTTP_USER_AGENT"]}','{$_GET["code"]}');");
 
 $im = imagecreatetruecolor(800, 350);
 
