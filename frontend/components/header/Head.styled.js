@@ -16,12 +16,13 @@ const Links = styled.div`
 `;
 
 const LinkBox = styled.div`
-  background-color: pink;
+  vertical-align: middle;
+  border: 1px solid black;
   margin-right: 5px; 
   height: 50px;
   width: 50px;
   text-align: center;
-
+  border-radius: 5px;
 `;
 
 // const Logo = styled.img`
