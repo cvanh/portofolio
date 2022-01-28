@@ -13,13 +13,13 @@ $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MY
 $router = new \Bramus\Router\Router();
 
 // returns the data about the user
-$router->get('/tracking',function(){
-    $data = Array();
-    $data["ip"] = $_SERVER["REMOTE_ADDR"];
-    $data["time"] = time();
+// $router->get('/tracking',function(){
+//     $data = Array();
+//     $data["ip"] = $_SERVER["REMOTE_ADDR"];
+//     $data["time"] = time();
 
-    echo json_encode($data,true);
-});
+//     echo json_encode($data,true);
+// });
 
 
 // get specific post based on id
