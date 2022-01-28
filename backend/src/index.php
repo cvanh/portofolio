@@ -62,30 +62,4 @@ $router->post('/crud/createblog', function () use ($database) {
     echo "succes";
 });
 
-// test api end point https://www.php.net/manual/en/book.apcu.php
-$router->get('/testing', function () use ($database) {
-    echo "c";
-    $apc_key = "{$_SERVER['SERVER_NAME']}~login:{$_SERVER['REMOTE_ADDR']}";
-    $apc_blocked_key = "{$_SERVER['SERVER_NAME']}~login-blocked:{$_SERVER['REMOTE_ADDR']}";
-
-    $tries = (int)apc_fetch($apc_key);
-    if ($tries >= 10) {
-        header("HTTP/1.1 429 Too Many Requests");
-        echo "You've exceeded the number of login attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
-        exit();
-    }
-
-    $success = false;
-    if (!$success) {
-        $blocked = (int)apc_fetch($apc_blocked_key);
-        echo "a";
-        apc_store($apc_key, $tries + 1, pow(2, $blocked + 1) * 60);  # store tries for 2^(x+1) minutes: 2, 4, 8, 16, ...
-        apc_store($apc_blocked_key, $blocked + 1, 86400);  # store number of times blocked for 24 hours
-    } else {
-        apc_delete($apc_key);
-        apc_delete($apc_blocked_key);
-        echo "b";
-    }
-});
-
 $router->run();
