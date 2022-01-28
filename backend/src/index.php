@@ -30,8 +30,8 @@ $router->get('/crud/getpost/(\d+)', function ($amount) use ($database) {
 });
 
 // get all posts with the limit
-$router->get('/crud/getposts', function () use ($database) {
-    $amount = (int)$_GET["limit"]; // makes shure it's only a int to prevent sql injection
+$router->get('/crud/getposts/(\d+)', function ($amount) use ($database) {
+    // $amount = (int)$_GET["limit"]; // makes shure it's only a int to prevent sql injection
     $query = "SELECT * FROM portofolio limit " . $amount;
     $data = format_query($database, $query);
     echo $data;

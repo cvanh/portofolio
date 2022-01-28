@@ -51,7 +51,7 @@ function Page({ data }) {
   );
 }
 Page.getInitialProps = async (ctx) => {
-  const res = await fetch(`${config.BaseUrl}/crud/getposts?limit=10`);
+  const res = await fetch(`${config.BaseUrl}/crud/getposts/10`);
   const json = await res.json();
   return { data: json };
 };
