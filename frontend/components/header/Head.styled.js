@@ -34,6 +34,18 @@ const Logo = styled.img.attrs({
 })`
   width: 100px;
   height: 60px;
+  
+`;
+
+export const Track = styled.img.attrs({ 
+  src: "http://83.162.165.175/portofolio/backend/src/tracking/png/github.php?code=portofolio",
+})`
+  margin-right: 10px;
+  height: 60px;
+  width: 25%;
+  @media only screen and (max-width: 868px) {
+    width:100%;
+    }
 `;
 
 const Head = {

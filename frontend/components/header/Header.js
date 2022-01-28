@@ -1,4 +1,4 @@
-import Head from "./Head.styled";
+import Head, { Track } from "./Head.styled";
 import LogoFoto from "../../public/logo.png";
 import Link from "next/link";
 
@@ -6,7 +6,9 @@ function Header() {
   return (
     <Head.Header>
       
-      <Head.Logo></Head.Logo>
+      <Head.Logo ></Head.Logo>
+      <Track/>
+
 
       <Head.Links>
         <Link href="/">
