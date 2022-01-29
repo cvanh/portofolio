@@ -4,6 +4,7 @@ require_once("../../../lib/db.php");
 require_once("../../functions/format_query.php");
 require_once("./functions/get_last_seen.php");
 require_once("./functions/report_page_serve.php");
+require_once("./functions/get_data.php");
 
 // load the .env
 $dotenv = Dotenv\Dotenv::createImmutable("../../../");
@@ -15,10 +16,12 @@ $font_file = './terminal.TTF';
 $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MYSQL_PASSWORD"], $_ENV["MYSQL_DATABASE"]);
 
 report_last_seen($database);
-$last_seen = get_last_seen($database);
+$data = get_data($database);
+$last_seen = $data[0]["last_seen"];
+$opens = count($data);
 
 // create the blank image canvas
-$im = imagecreatetruecolor(3000, 450);
+$im = imagecreatetruecolor(3000, 550);
 
 // create the line for user's ip
 imagefttext(
@@ -66,6 +69,18 @@ imagefttext(
     imagecolorallocate($im, 0, 150, 0),
     $font_file,
     "code?: {$_GET["code"]}"
+);
+
+// get the amount of opens
+imagefttext(
+    $im,
+    50,
+    0,
+    50,
+    500,
+    imagecolorallocate($im, 0, 150, 0),
+    $font_file,
+    "opens: {$opens}"
 );
 
 header('Cache-Control: no-cache, no-store, must-revalidate');
