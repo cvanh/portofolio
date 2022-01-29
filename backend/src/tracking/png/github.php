@@ -68,7 +68,7 @@ imagefttext(
     "code?: {$_GET["code"]}"
 );
 
-
+header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Content-Type: image/png');
 imagepng($im);
 imagedestroy($im);
