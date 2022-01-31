@@ -3,7 +3,7 @@ require_once('../../../vendor/autoload.php');
 require_once("../../../lib/db.php");
 require_once("../../functions/format_query.php");
 require_once("./functions/get_last_seen.php");
-require_once("./functions/report_page_serve.php");
+require_once("./functions/report_last_seen.php");
 require_once("./functions/get_data.php");
 require_once("./functions/get_last_visits.php");
 
@@ -16,6 +16,8 @@ $font_file = './terminal.TTF';
 // create the database connection
 $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MYSQL_PASSWORD"], $_ENV["MYSQL_DATABASE"]);
 
+report_last_seen($database); // reports the current pageview for the next visit
+
 $data = get_data($database);
 // var_dump($data);
 $last_seen = $data[0]["last_seen"]; 
@@ -23,7 +25,7 @@ $last_ip = $data[0]["ip"];
 $last_visits = get_last_visits($data);
 $opens = count($data); 
 
-report_last_seen($database); // reports the current pageview for the next visit
+// report_last_seen($database); // reports the current pageview for the next visit
 
 
 // create the blank image canvas
