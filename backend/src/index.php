@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 require_once("../lib/db.php");
 require_once("./functions/format_query.php");
 
@@ -24,6 +24,7 @@ $router = new \Bramus\Router\Router();
 
 // get specific post based on id
 $router->get('/crud/getpost/(\d+)', function ($amount) use ($database) {
+	echo "kaas";
     $query = "SELECT * FROM portofolio where id =  " . $amount;
     $data = format_query($database, $query);
     echo $data;
@@ -61,5 +62,5 @@ $router->post('/crud/createblog', function () use ($database) {
     $database->query($query);
     echo "succes";
 });
-
+// $router->setBasePath('/');
 $router->run();
