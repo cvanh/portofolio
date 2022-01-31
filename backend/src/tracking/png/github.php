@@ -1,11 +1,11 @@
 <?php
-require '../../../vendor/autoload.php';
+require_once('../../../vendor/autoload.php');
 require_once("../../../lib/db.php");
 require_once("../../functions/format_query.php");
 require_once("./functions/get_last_seen.php");
 require_once("./functions/report_page_serve.php");
 require_once("./functions/get_data.php");
-require_once("./funtions/get_last_visits.php");
+require_once("./functions/get_last_visits.php");
 
 // load the .env
 $dotenv = Dotenv\Dotenv::createImmutable("../../../");
@@ -17,6 +17,7 @@ $font_file = './terminal.TTF';
 $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MYSQL_PASSWORD"], $_ENV["MYSQL_DATABASE"]);
 
 $data = get_data($database);
+// var_dump($data);
 $last_seen = $data[0]["last_seen"]; 
 $last_ip = $data[0]["ip"]; 
 $last_visits = get_last_visits($data);
@@ -107,7 +108,7 @@ imagefttext(
     700,
     imagecolorallocate($im, 0, 150, 0),
     $font_file,
-    "last seen ip's: {$last_visits}"
+    "last 6 seen ip's: {$last_visits}"
 );
 
 header('Cache-Control: no-cache, no-store, must-revalidate'); // this is so the image doesnt get chached and get refreshed every load
