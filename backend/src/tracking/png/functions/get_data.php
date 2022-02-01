@@ -2,8 +2,8 @@
 /**
  * gets the data of everything with the trackid
  *
- * @param [type] $database
- * @return void
+ * @param [socket] $database
+ * @return array with the results
  */
 function get_data($database)
 {

@@ -19,16 +19,14 @@ $database = new Database($_ENV["MYSQL_HOST"], $_ENV["MYSQL_USERNAME"], $_ENV["MY
 report_last_seen($database); // reports the current pageview for the next visit
 
 $data = get_data($database);
-// var_dump($data);
 $last_seen = $data[0]["last_seen"]; 
 $last_ip = $data[0]["ip"]; 
 $last_visits = get_last_visits($data);
-$opens = count($data); 
 
 // report_last_seen($database); // reports the current pageview for the next visit
 
 
-// create the blank image canvas
+// create the blank image canvas 
 $im = imagecreatetruecolor(3000, 750);
 
 // create the line for user's ip
@@ -63,7 +61,7 @@ imagefttext(
     300,
     imagecolorallocate($im, 0, 150, 0),
     $font_file,
-    "opens: {$last_ip}"
+    "opens:" . count($data)
 );
 
 // creates the line for the user-agent
@@ -90,17 +88,17 @@ imagefttext(
     "tracking code: {$_GET["code"]}"
 );
 
-// get the amount of opens
-imagefttext(
-    $im,
-    50,
-    0,
-    50,
-    600,
-    imagecolorallocate($im, 0, 150, 0),
-    $font_file,
-    "amount of opens: {$opens}"
-);
+// // get the amount of opens
+// imagefttext(
+//     $im,
+//     50,
+//     0,
+//     50,
+//     600,
+//     imagecolorallocate($im, 0, 150, 0),
+//     $font_file,
+//     "amount of opens: {$opens}"
+// );
 
 imagefttext(
     $im,

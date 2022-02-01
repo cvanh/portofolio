@@ -1,1 +1,2 @@
-de front end van mijn portofolio
+# frontend
+shitty front end 
