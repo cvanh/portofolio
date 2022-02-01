@@ -32,4 +32,4 @@ creates a post
 
 # nice to haves
 [] anti brute forceing
-[] login [based on](https://dev.to/mgranados/how-to-build-a-simple-login-with-nextjs-and-react-hooks-255)
+[] login [based on](https://dev.to/mgranados/how-to-build-a-simple-login-with-nextjs-and-react-hooks-255) or with a simple secret key
