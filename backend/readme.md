@@ -8,8 +8,7 @@ there are 2 tracking posibilities for tracking:
 svg: this one is using a svg with a script tag in it and fetches data from the server and renders this, this can be found in
  `/src/tracking/png/github.svg` 
 
-png: this one is a little bit harder it uses no client side code and receives a lot of data , this one is located in
-`/src/tracking/svg/github.png`
+png: this one is a little bit harder it uses no client side code and receives a lot of data this one works pretty good in emails and other applications you can find this one in `/src/tracking/svg/github.png`
 
 # routes 
 `/tracking`
