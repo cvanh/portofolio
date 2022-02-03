@@ -34,7 +34,6 @@ $router->get('/hello',function(){
 
 // get specific post based on id
 $router->get('/crud/getpost/(\d+)', function ($amount) use ($database) {
-	echo "kaas";
     $query = "SELECT * FROM portofolio where id =  " . $amount;
     $data = format_query($database, $query);
     echo $data;
