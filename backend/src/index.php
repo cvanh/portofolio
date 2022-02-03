@@ -1,5 +1,11 @@
 <?php
-require '../../vendor/autoload.php';
+    // In case one is using PHP 5.4's built-in server
+    $filename = __DIR__ . preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
+if (php_sapi_name() === 'cli-server' && is_file($filename)) {
+    return false;
+}
+
+require '../vendor/autoload.php';
 require_once("../lib/db.php");
 require_once("./functions/format_query.php");
 
@@ -19,6 +25,10 @@ $router->get('/tracking',function(){
     $data["time"] = time();
 
     echo json_encode($data,true);
+});
+
+$router->get('/hello',function(){
+    echo "hallo";
 });
 
 
