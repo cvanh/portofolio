@@ -36,6 +36,7 @@ class Database {
    */
   function format_query($query){
     header('Content-type: application/json; charset=utf-8');
+    header("Access-Control-Allow-Origin: *");
     $result = $this->query($query);
     while ($row = mysqli_fetch_assoc($result)) {
         $data[]=$row;
